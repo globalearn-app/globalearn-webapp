@@ -40,7 +40,7 @@ const translations: Record<LanguageCode, Record<string, string>> = {
       "Our team of experts is always available to help you succeed",
     "why.profits": "Daily Profit Returns",
     "why.profits.desc":
-      "Earn up to 8% daily returns based on your investment tier",
+      "Earn up to 8% daily returns based on your investment plan",
     "why.fast": "Fast Withdrawals",
     "why.fast.desc": "Process withdrawals within 24 hours, guaranteed",
     "why.regulated": "Fully Regulated",
@@ -177,7 +177,7 @@ const translations: Record<LanguageCode, Record<string, string>> = {
     "nav.markets": "बाज़ार",
     "nav.trading": "ट्रेडिंग",
     "nav.about": "हमारे बारे में",
-    "nav.contact": "संपर्क करें",
+    "nav.contact": "संपर्क करे���",
     "nav.login": "लॉग इन",
     "nav.register": "शुरू करें",
     "hero.title": "विश्वास के साथ क्रिप्टो और स्टॉक ट्रेड करें",

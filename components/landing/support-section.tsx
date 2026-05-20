@@ -100,7 +100,7 @@ export function SupportSection() {
             </div>
             <h3 className="font-semibold mb-2">VIP Support</h3>
             <p className="text-sm text-muted-foreground mb-4">
-              Priority support for Gold+ tiers
+              Priority support for Gold+ plans
             </p>
             <span className="text-sm font-medium text-primary">Premium Service</span>
           </motion.div>

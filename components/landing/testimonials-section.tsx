@@ -51,7 +51,7 @@ const testimonials = [
     role: "Retired Executive",
     location: "Spain",
     avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face",
-    content: "After retiring, I was looking for a reliable passive income source. Global Earn's Diamond tier has provided me with excellent returns and complete peace of mind.",
+    content: "After retiring, I was looking for a reliable passive income source. Global Earn's Diamond plan has provided me with excellent returns and complete peace of mind.",
     rating: 5,
     investment: "Diamond Plan",
   },

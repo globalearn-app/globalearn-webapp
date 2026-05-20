@@ -41,14 +41,14 @@ import {
 } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
 import { useCurrency } from "@/lib/context/CurrencyContext";
-import { getTierById, tiers } from "@/lib/config/tiers";
+import { getPlanById, INVESTMENT_PLANS } from "@/lib/config/tiers";
 
 interface User {
   id: string;
   email: string;
   firstName: string;
   lastName: string;
-  tier: 1 | 2 | 3 | 4 | 5 | 6;
+  plan: 1 | 2 | 3 | 4 | 5 | 6;
   balance: number;
   status: "active" | "inactive" | "suspended";
   kycStatus: "pending" | "submitted" | "approved" | "rejected";
@@ -61,7 +61,7 @@ export default function AdminUsersPage() {
   const [users, setUsers] = useState<User[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
-  const [tierFilter, setTierFilter] = useState("all");
+  const [planFilter, setPlanFilter] = useState("all");
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
   const [isViewDialogOpen, setIsViewDialogOpen] = useState(false);
@@ -76,7 +76,7 @@ export default function AdminUsersPage() {
         email: "john.doe@email.com",
         firstName: "John",
         lastName: "Doe",
-        tier: 3,
+        plan: 3,
         balance: 15000,
         status: "active",
         kycStatus: "approved",
@@ -88,7 +88,7 @@ export default function AdminUsersPage() {
         email: "jane.smith@email.com",
         firstName: "Jane",
         lastName: "Smith",
-        tier: 2,
+        plan: 2,
         balance: 5000,
         status: "active",
         kycStatus: "approved",
@@ -100,7 +100,7 @@ export default function AdminUsersPage() {
         email: "mike.wilson@email.com",
         firstName: "Mike",
         lastName: "Wilson",
-        tier: 1,
+        plan: 1,
         balance: 1000,
         status: "active",
         kycStatus: "pending",
@@ -112,7 +112,7 @@ export default function AdminUsersPage() {
         email: "sarah.jones@email.com",
         firstName: "Sarah",
         lastName: "Jones",
-        tier: 4,
+        plan: 4,
         balance: 50000,
         status: "active",
         kycStatus: "approved",
@@ -124,7 +124,7 @@ export default function AdminUsersPage() {
         email: "tom.brown@email.com",
         firstName: "Tom",
         lastName: "Brown",
-        tier: 1,
+        plan: 1,
         balance: 500,
         status: "suspended",
         kycStatus: "rejected",
@@ -136,7 +136,7 @@ export default function AdminUsersPage() {
         email: "emily.davis@email.com",
         firstName: "Emily",
         lastName: "Davis",
-        tier: 5,
+        plan: 5,
         balance: 100000,
         status: "active",
         kycStatus: "approved",
@@ -148,7 +148,7 @@ export default function AdminUsersPage() {
         email: "chris.martin@email.com",
         firstName: "Chris",
         lastName: "Martin",
-        tier: 2,
+        plan: 2,
         balance: 3000,
         status: "inactive",
         kycStatus: "submitted",
@@ -160,7 +160,7 @@ export default function AdminUsersPage() {
         email: "lisa.anderson@email.com",
         firstName: "Lisa",
         lastName: "Anderson",
-        tier: 6,
+        plan: 6,
         balance: 250000,
         status: "active",
         kycStatus: "approved",
@@ -177,8 +177,8 @@ export default function AdminUsersPage() {
       user.firstName.toLowerCase().includes(searchQuery.toLowerCase()) ||
       user.lastName.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesStatus = statusFilter === "all" || user.status === statusFilter;
-    const matchesTier = tierFilter === "all" || user.tier.toString() === tierFilter;
-    return matchesSearch && matchesStatus && matchesTier;
+    const matchesPlan = planFilter === "all" || user.plan.toString() === planFilter;
+    return matchesSearch && matchesStatus && matchesPlan;
   });
 
   const totalPages = Math.ceil(filteredUsers.length / usersPerPage);
@@ -243,16 +243,16 @@ export default function AdminUsersPage() {
                   <SelectItem value="suspended">Suspended</SelectItem>
                 </SelectContent>
               </Select>
-              <Select value={tierFilter} onValueChange={setTierFilter}>
+              <Select value={planFilter} onValueChange={setPlanFilter}>
                 <SelectTrigger className="w-[130px]">
                   <ArrowUpDown className="h-4 w-4 mr-2" />
                   <SelectValue placeholder="Plan" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="all">All Plans</SelectItem>
-                  {tiers.map((tier) => (
-                    <SelectItem key={tier.id} value={tier.id.toString()}>
-                      {tier.name}
+                  {INVESTMENT_PLANS.map((plan) => (
+                    <SelectItem key={plan.id} value={plan.id.toString()}>
+                      {plan.name}
                     </SelectItem>
                   ))}
                 </SelectContent>
@@ -276,7 +276,7 @@ export default function AdminUsersPage() {
               </thead>
               <tbody>
                 {paginatedUsers.map((user) => {
-                  const tier = getTierById(user.tier);
+                  const plan = getPlanById(user.plan);
                   return (
                     <tr key={user.id} className="border-b border-border hover:bg-secondary/30">
                       <td className="py-4 px-4">
@@ -289,9 +289,9 @@ export default function AdminUsersPage() {
                       </td>
                       <td className="py-4 px-4">
                         <span
-                          className={`px-2 py-1 rounded-full text-xs font-medium bg-gradient-to-r ${tier?.color} text-white`}
+                          className={`px-2 py-1 rounded-full text-xs font-medium bg-gradient-to-r ${plan?.color} text-white`}
                         >
-                          {tier?.name}
+                          {plan?.name}
                         </span>
                       </td>
                       <td className="py-4 px-4 font-medium">{format(user.balance)}</td>
@@ -425,8 +425,8 @@ export default function AdminUsersPage() {
                   <p className="font-medium">{selectedUser.email}</p>
                 </div>
                 <div>
-                  <Label className="text-muted-foreground">Tier</Label>
-                  <p className="font-medium">{getTierById(selectedUser.tier)?.name}</p>
+                  <Label className="text-muted-foreground">Plan</Label>
+                  <p className="font-medium">{getPlanById(selectedUser.plan)?.name}</p>
                 </div>
                 <div>
                   <Label className="text-muted-foreground">Balance</Label>
@@ -487,15 +487,15 @@ export default function AdminUsersPage() {
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label>Tier</Label>
-                  <Select defaultValue={selectedUser.tier.toString()}>
+                  <Label>Plan</Label>
+                  <Select defaultValue={selectedUser.plan.toString()}>
                     <SelectTrigger>
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                      {tiers.map((tier) => (
-                        <SelectItem key={tier.id} value={tier.id.toString()}>
-                          {tier.name}
+                      {INVESTMENT_PLANS.map((plan) => (
+                        <SelectItem key={plan.id} value={plan.id.toString()}>
+                          {plan.name}
                         </SelectItem>
                       ))}
                     </SelectContent>

@@ -281,7 +281,7 @@ export default function WithdrawalsPage() {
                   <span className="font-medium">VIP Benefits</span>
                 </div>
                 <p className="text-sm text-muted-foreground">
-                  As a {tier.name} tier member, you enjoy faster withdrawals and
+                  As a {tier.name} plan member, you enjoy faster withdrawals and
                   higher daily limits.
                 </p>
               </CardContent>

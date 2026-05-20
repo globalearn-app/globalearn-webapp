@@ -67,7 +67,7 @@ const faqItems = [
   {
     question: "What are the trading fees?",
     answer:
-      "Our trading fees start at 0.1% and decrease based on your trading volume and tier level. VIP members enjoy reduced fees.",
+      "Our trading fees start at 0.1% and decrease based on your trading volume and plan level. VIP members enjoy reduced fees.",
   },
   {
     question: "Is my account insured?",

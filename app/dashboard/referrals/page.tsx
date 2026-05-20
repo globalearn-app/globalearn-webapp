@@ -59,7 +59,7 @@ const mockReferrals: Referral[] = [
   },
 ];
 
-const tiers = [
+const referralLevels = [
   { level: 1, referrals: 5, bonus: 50, commission: "5%" },
   { level: 2, referrals: 15, bonus: 150, commission: "7%" },
   { level: 3, referrals: 30, bonus: 400, commission: "10%" },
@@ -80,11 +80,11 @@ export default function ReferralsPage() {
   const totalEarnings = referrals.reduce((sum, r) => sum + r.commission, 0);
   const pendingEarnings = referrals.filter((r) => r.status === "active").reduce((sum, r) => sum + r.commission, 0);
 
-  const currentTier = tiers.find((t) => totalReferrals < t.referrals) || tiers[tiers.length - 1];
-  const previousTier = tiers[tiers.indexOf(currentTier) - 1];
-  const progress = previousTier
-    ? ((totalReferrals - previousTier.referrals) / (currentTier.referrals - previousTier.referrals)) * 100
-    : (totalReferrals / currentTier.referrals) * 100;
+  const currentLevel = referralLevels.find((t) => totalReferrals < t.referrals) || referralLevels[referralLevels.length - 1];
+  const previousLevel = referralLevels[referralLevels.indexOf(currentLevel) - 1];
+  const progress = previousLevel
+    ? ((totalReferrals - previousLevel.referrals) / (currentLevel.referrals - previousLevel.referrals)) * 100
+    : (totalReferrals / currentLevel.referrals) * 100;
 
   const copyToClipboard = (text: string, label: string) => {
     navigator.clipboard.writeText(text);
@@ -283,41 +283,41 @@ export default function ReferralsPage() {
           </Card>
         </div>
 
-        {/* Tier Progress */}
+        {/* Level Progress */}
         <div className="space-y-6">
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Gift className="h-5 w-5" />
-                Referral Tiers
+                Referral Levels
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="text-center p-4 rounded-lg bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/20">
-                <p className="text-sm text-muted-foreground">Current Tier</p>
-                <p className="text-3xl font-bold text-primary">Level {tiers.indexOf(currentTier) + 1}</p>
+                <p className="text-sm text-muted-foreground">Current Level</p>
+                <p className="text-3xl font-bold text-primary">Level {referralLevels.indexOf(currentLevel) + 1}</p>
                 <p className="text-sm text-muted-foreground mt-1">
-                  {currentTier.commission} Commission Rate
+                  {currentLevel.commission} Commission Rate
                 </p>
               </div>
 
               <div className="space-y-2">
                 <div className="flex justify-between text-sm">
-                  <span>Progress to next tier</span>
-                  <span>{totalReferrals} / {currentTier.referrals} referrals</span>
+                  <span>Progress to next level</span>
+                  <span>{totalReferrals} / {currentLevel.referrals} referrals</span>
                 </div>
                 <Progress value={Math.min(progress, 100)} className="h-2" />
               </div>
 
               <div className="space-y-3">
-                {tiers.map((tier, index) => {
-                  const isCurrentTier = tier === currentTier;
-                  const isCompleted = totalReferrals >= tier.referrals;
+                {referralLevels.map((level, index) => {
+                  const isCurrentLevel = level === currentLevel;
+                  const isCompleted = totalReferrals >= level.referrals;
                   return (
                     <div
-                      key={tier.level}
+                      key={level.level}
                       className={`p-3 rounded-lg border transition-colors ${
-                        isCurrentTier
+                        isCurrentLevel
                           ? "border-primary bg-primary/5"
                           : isCompleted
                           ? "border-green-500/50 bg-green-500/5"
@@ -330,7 +330,7 @@ export default function ReferralsPage() {
                             className={`h-8 w-8 rounded-full flex items-center justify-center text-sm font-bold ${
                               isCompleted
                                 ? "bg-green-500 text-white"
-                                : isCurrentTier
+                                : isCurrentLevel
                                 ? "bg-primary text-primary-foreground"
                                 : "bg-muted text-muted-foreground"
                             }`}
@@ -338,16 +338,16 @@ export default function ReferralsPage() {
                             {isCompleted ? <CheckCircle className="h-4 w-4" /> : index + 1}
                           </div>
                           <div>
-                            <p className="font-medium text-sm">Level {tier.level}</p>
+                            <p className="font-medium text-sm">Level {level.level}</p>
                             <p className="text-xs text-muted-foreground">
-                              {tier.referrals} referrals
+                              {level.referrals} referrals
                             </p>
                           </div>
                         </div>
                         <div className="text-right">
-                          <p className="text-sm font-medium">{tier.commission}</p>
+                          <p className="text-sm font-medium">{level.commission}</p>
                           <p className="text-xs text-muted-foreground">
-                            +{format(tier.bonus)} bonus
+                            +{format(level.bonus)} bonus
                           </p>
                         </div>
                       </div>

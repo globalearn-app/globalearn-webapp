@@ -56,7 +56,7 @@ const notifications: Notification[] = [
     id: "4",
     type: "system",
     title: "Account Upgraded",
-    message: "Congratulations! Your account has been upgraded to Gold tier.",
+    message: "Congratulations! Your account has been upgraded to Gold plan.",
     time: "2 days ago",
     read: true,
   },
