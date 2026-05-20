@@ -112,11 +112,11 @@ export function MilestonesCard({
     {
       id: 6,
       title: "Elite Investor",
-      description: "Reach Tier 4 or higher",
+      description: "Reach Plan 4 or higher",
       icon: Award,
       target: 4,
       current: Math.min(currentTier, 4),
-      unit: "tier",
+      unit: "plan",
       reward: "VIP Status",
       completed: currentTier >= 4,
       color: "from-primary to-primary/80",

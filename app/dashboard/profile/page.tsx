@@ -76,12 +76,12 @@ export default function ProfilePage() {
             </h2>
             <p className="text-sm text-muted-foreground mb-4">{user?.email}</p>
 
-            {/* Tier Badge */}
+            {/* Plan Badge */}
             <div
               className={`inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r ${tier?.color} text-white text-sm font-medium`}
             >
               <Shield className="h-4 w-4" />
-              {tier?.name} Tier
+              {tier?.name} Plan
             </div>
 
             {/* Stats */}

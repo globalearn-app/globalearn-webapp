@@ -26,6 +26,7 @@ import { useAuth } from "@/lib/context/AuthContext";
 import { useCurrency } from "@/lib/context/CurrencyContext";
 import { getTierById } from "@/lib/config/tiers";
 import { MilestonesCard } from "@/components/dashboard/milestones-card";
+import { TradeNotificationPopup } from "@/components/ui/trade-notification";
 
 interface MarketData {
   id: string;
@@ -156,7 +157,7 @@ export default function DashboardPage() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-muted-foreground">Current Tier</p>
+                <p className="text-sm text-muted-foreground">Current Plan</p>
                 <p className="text-2xl font-bold">{tier?.name}</p>
                 <p className="text-sm text-muted-foreground">
                   {tier?.duration} days duration
@@ -387,6 +388,9 @@ export default function DashboardPage() {
           </div>
         </CardContent>
       </Card>
+
+      {/* Trade Notifications */}
+      <TradeNotificationPopup position="bottom-right" interval={8000} />
     </div>
   );
 }

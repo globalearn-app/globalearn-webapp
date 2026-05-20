@@ -115,7 +115,7 @@ export function DashboardSidebar() {
                   {user?.firstName} {user?.lastName}
                 </p>
                 <p className="text-xs text-muted-foreground truncate">
-                  {tier?.name || "Starter"} Tier
+                  {tier?.name || "Starter"} Plan
                 </p>
               </div>
             </div>

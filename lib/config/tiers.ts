@@ -1,4 +1,4 @@
-export const TRADING_TIERS = [
+export const INVESTMENT_PLANS = [
   {
     id: 1,
     name: "Starter",
@@ -86,17 +86,27 @@ export const TRADING_TIERS = [
   },
 ] as const;
 
-export type TradingTier = (typeof TRADING_TIERS)[number];
+// Alias for backwards compatibility
+export const TRADING_TIERS = INVESTMENT_PLANS;
 
-export function getTierById(id: number): TradingTier | undefined {
-  return TRADING_TIERS.find((tier) => tier.id === id);
+export type InvestmentPlan = (typeof INVESTMENT_PLANS)[number];
+export type TradingTier = InvestmentPlan;
+
+export function getPlanById(id: number): InvestmentPlan | undefined {
+  return INVESTMENT_PLANS.find((plan) => plan.id === id);
 }
 
-export function getTierByInvestment(amount: number): TradingTier {
-  for (let i = TRADING_TIERS.length - 1; i >= 0; i--) {
-    if (amount >= TRADING_TIERS[i].minInvestment) {
-      return TRADING_TIERS[i];
+// Alias for backwards compatibility
+export const getTierById = getPlanById;
+
+export function getPlanByInvestment(amount: number): InvestmentPlan {
+  for (let i = INVESTMENT_PLANS.length - 1; i >= 0; i--) {
+    if (amount >= INVESTMENT_PLANS[i].minInvestment) {
+      return INVESTMENT_PLANS[i];
     }
   }
-  return TRADING_TIERS[0];
+  return INVESTMENT_PLANS[0];
 }
+
+// Alias for backwards compatibility
+export const getTierByInvestment = getPlanByInvestment;

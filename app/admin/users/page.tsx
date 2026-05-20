@@ -246,10 +246,10 @@ export default function AdminUsersPage() {
               <Select value={tierFilter} onValueChange={setTierFilter}>
                 <SelectTrigger className="w-[130px]">
                   <ArrowUpDown className="h-4 w-4 mr-2" />
-                  <SelectValue placeholder="Tier" />
+                  <SelectValue placeholder="Plan" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="all">All Tiers</SelectItem>
+                  <SelectItem value="all">All Plans</SelectItem>
                   {tiers.map((tier) => (
                     <SelectItem key={tier.id} value={tier.id.toString()}>
                       {tier.name}
@@ -266,7 +266,7 @@ export default function AdminUsersPage() {
               <thead>
                 <tr className="border-b border-border">
                   <th className="text-left py-3 px-4 font-medium text-muted-foreground">User</th>
-                  <th className="text-left py-3 px-4 font-medium text-muted-foreground">Tier</th>
+                  <th className="text-left py-3 px-4 font-medium text-muted-foreground">Plan</th>
                   <th className="text-left py-3 px-4 font-medium text-muted-foreground">Balance</th>
                   <th className="text-left py-3 px-4 font-medium text-muted-foreground">Status</th>
                   <th className="text-left py-3 px-4 font-medium text-muted-foreground">KYC</th>
