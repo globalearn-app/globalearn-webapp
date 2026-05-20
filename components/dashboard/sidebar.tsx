@@ -20,7 +20,7 @@ import { useState } from "react";
 import { useAuth } from "@/lib/context/AuthContext";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { getTierById } from "@/lib/config/tiers";
+import { getTierById } from "@/lib/config/plans";
 
 const sidebarLinks = [
   {
@@ -69,7 +69,7 @@ export function DashboardSidebar() {
   const pathname = usePathname();
   const { user, logout } = useAuth();
   const [collapsed, setCollapsed] = useState(false);
-  const tier = user?.tier ? getTierById(user.tier) : null;
+  const plan = user?.plan ? getTierById(user.plan) : null;
 
   return (
     <aside
@@ -115,7 +115,7 @@ export function DashboardSidebar() {
                   {user?.firstName} {user?.lastName}
                 </p>
                 <p className="text-xs text-muted-foreground truncate">
-                  {tier?.name || "Starter"} Tier
+                  {plan?.name || "Starter"} Plan
                 </p>
               </div>
             </div>
