@@ -11,6 +11,7 @@ import { LiveMarketCharts } from "@/components/landing/live-market-charts";
 import { YouTubeSection } from "@/components/landing/youtube-section";
 import { TestimonialsSection } from "@/components/landing/testimonials-section";
 import { FAQSection } from "@/components/landing/faq-section";
+import { MilestonesSection } from "@/components/landing/milestones-section";
 import { CTASection } from "@/components/landing/cta-section";
 import { SupportSection } from "@/components/landing/support-section";
 import { RiskDisclosureSection } from "@/components/landing/risk-disclosure-section";
@@ -44,6 +45,9 @@ export default function HomePage() {
 
       {/* Testimonials */}
       <TestimonialsSection />
+
+      {/* Milestones */}
+      <MilestonesSection />
 
       {/* FAQ */}
       <FAQSection />

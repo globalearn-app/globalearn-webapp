@@ -25,6 +25,7 @@ import {
 import { useAuth } from "@/lib/context/AuthContext";
 import { useCurrency } from "@/lib/context/CurrencyContext";
 import { getTierById } from "@/lib/config/tiers";
+import { MilestonesCard } from "@/components/dashboard/milestones-card";
 
 interface MarketData {
   id: string;
@@ -298,6 +299,15 @@ export default function DashboardPage() {
           </div>
         </CardContent>
       </Card>
+
+      {/* Milestones */}
+      <MilestonesCard
+        totalDeposits={portfolioValue}
+        totalTrades={15}
+        totalProfit={dailyProfit * 30}
+        daysActive={12}
+        currentTier={user?.tier || 1}
+      />
 
       {/* Recent Activity */}
       <Card>
