@@ -24,7 +24,7 @@ import {
 } from "recharts";
 import { useAuth } from "@/lib/context/AuthContext";
 import { useCurrency } from "@/lib/context/CurrencyContext";
-import { getTierById } from "@/lib/config/tiers";
+import { getTierById } from "@/lib/config/plans";
 
 interface MarketData {
   id: string;
@@ -39,7 +39,7 @@ export default function DashboardPage() {
   const { user } = useAuth();
   const { format } = useCurrency();
   const [markets, setMarkets] = useState<MarketData[]>([]);
-  const tier = user?.tier ? getTierById(user.tier) : getTierById(1);
+  const plan = user?.plan ? getTierById(user.plan) : getTierById(1);
 
   // Mock portfolio data
   const portfolioValue = 12450.89;
@@ -141,7 +141,7 @@ export default function DashboardPage() {
                   +{format(dailyProfit)}
                 </p>
                 <p className="text-sm text-muted-foreground">
-                  {tier?.dailyProfit}% daily rate
+                  {plan?.dailyProfit}% daily rate
                 </p>
               </div>
               <div className="h-12 w-12 rounded-full bg-green-500/20 flex items-center justify-center">
@@ -155,13 +155,13 @@ export default function DashboardPage() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-muted-foreground">Current Tier</p>
-                <p className="text-2xl font-bold">{tier?.name}</p>
+                <p className="text-sm text-muted-foreground">Current plan</p>
+                <p className="text-2xl font-bold">{plan?.name}</p>
                 <p className="text-sm text-muted-foreground">
-                  {tier?.duration} days duration
+                  {plan?.duration} days duration
                 </p>
               </div>
-              <div className={`h-12 w-12 rounded-full bg-gradient-to-br ${tier?.color} flex items-center justify-center`}>
+              <div className={`h-12 w-12 rounded-full bg-gradient-to-br ${plan?.color} flex items-center justify-center`}>
                 <Activity className="h-6 w-6 text-white" />
               </div>
             </div>
