@@ -44,7 +44,7 @@ export default function DashboardPage() {
   // Mock portfolio data
   const portfolioValue = 12450.89;
   const portfolioChange = 5.23;
-  const dailyProfit = tier ? (portfolioValue * tier.dailyProfit) / 100 : 0;
+  const dailyProfit = plan ? (portfolioValue * plan.dailyProfit) / 100 : 0;
 
   useEffect(() => {
     async function fetchMarkets() {
