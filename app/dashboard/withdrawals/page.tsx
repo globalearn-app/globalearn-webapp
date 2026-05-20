@@ -24,7 +24,7 @@ import {
 } from "@/components/ui/select";
 import { useCurrency } from "@/lib/context/CurrencyContext";
 import { useAuth } from "@/lib/context/AuthContext";
-import { getTierById } from "@/lib/config/plans";
+import { getPlanById } from "@/lib/config/plans";
 
 export default function WithdrawalsPage() {
   const { format } = useCurrency();
@@ -34,7 +34,7 @@ export default function WithdrawalsPage() {
   const [amount, setAmount] = useState("");
   const [walletAddress, setWalletAddress] = useState("");
 
-  const plan = user?.plan ? getTierById(user.plan) : getTierById(1);
+  const plan = user?.plan ? getPlanById(user.plan) : getPlanById(1);
   const availableBalance = 10200.0;
   const fee = parseFloat(amount || "0") * 0.01;
   const netAmount = parseFloat(amount || "0") - fee;
