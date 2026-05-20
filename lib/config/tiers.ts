@@ -86,12 +86,20 @@ export const TRADING_PLANS = [
   },
 ] as const;
 
-export type TradingPlans = (typeof TRADING_PLANS)[number];
+// Alias so both imports work
+export const tiers = TRADING_PLANS;
 
-export function getTierById(id: number): TradingPlan | undefined {
-  return TRADING_PLANS.find((plan) => plan.id === id);
+// Types
+export type TradingPlan = (typeof TRADING_PLANS)[number];
+export type Tier = TradingPlan; // Alias for consistency
+export type TierId = TradingPlan['id']; // 1 | 2 | 3 | 4 | 5 | 6
+
+// Helper: Get tier by ID. Falls back to Starter if not found
+export function getTierById(id: number): TradingPlan {
+  return TRADING_PLANS.find((plan) => plan.id === id)?? TRADING_PLANS[0];
 }
 
+// Helper: Get tier by investment amount
 export function getTierByInvestment(amount: number): TradingPlan {
   for (let i = TRADING_PLANS.length - 1; i >= 0; i--) {
     if (amount >= TRADING_PLANS[i].minInvestment) {
@@ -99,4 +107,16 @@ export function getTierByInvestment(amount: number): TradingPlan {
     }
   }
   return TRADING_PLANS[0];
+}
+
+// Helper: Check if user can upgrade to a tier
+export function canUpgradeToTier(currentTierId: number, targetTierId: number): boolean {
+  return targetTierId > currentTierId;
+}
+
+// Helper: Get next tier for upgrades
+export function getNextTier(currentTierId: number): TradingPlan | null {
+  const currentIndex = TRADING_PLANS.findIndex((plan) => plan.id === currentTierId);
+  if (currentIndex === -1 || currentIndex === TRADING_PLANS.length - 1) return null;
+  return TRADING_PLANS[currentIndex + 1];
 }
