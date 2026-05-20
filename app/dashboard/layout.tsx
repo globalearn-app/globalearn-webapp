@@ -1,14 +1,21 @@
 "use client";
 
-import { ReactNode } from "react";
+import { ReactNode, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/context/AuthContext";
-import { redirect } from "next/navigation";
 import { DashboardSidebar } from "@/components/dashboard/sidebar";
 import { DashboardHeader } from "@/components/dashboard/header";
 import { FloatingContact } from "@/components/layout/floating-contact";
 
 export default function DashboardLayout({ children }: { children: ReactNode }) {
+  const router = useRouter();
   const { isAuthenticated, isLoading } = useAuth();
+
+  useEffect(() => {
+    if (!isLoading && !isAuthenticated) {
+      router.push("/login");
+    }
+  }, [isLoading, isAuthenticated, router]);
 
   if (isLoading) {
     return (
@@ -22,7 +29,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
   }
 
   if (!isAuthenticated) {
-    redirect("/login");
+    return null;
   }
 
   return (
