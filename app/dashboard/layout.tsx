@@ -35,9 +35,9 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen bg-background">
       <DashboardSidebar />
-      <div className="pl-64">
+      <div className="lg:pl-64">
         <DashboardHeader />
-        <main className="p-6">{children}</main>
+        <main className="p-4 lg:p-6">{children}</main>
       </div>
       <FloatingContact />
     </div>

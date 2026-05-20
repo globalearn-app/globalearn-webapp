@@ -10,7 +10,6 @@ import {
   Shield,
 } from "lucide-react";
 import { useLanguage } from "@/lib/context/LanguageContext";
-import { useCurrency } from "@/lib/context/CurrencyContext";
 
 const milestones = [
   {
@@ -92,7 +91,6 @@ const timeline = [
 
 export function MilestonesSection() {
   const { t } = useLanguage();
-  const { format } = useCurrency();
 
   return (
     <section className="py-24 bg-background">
@@ -160,7 +158,7 @@ export function MilestonesSection() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className={`relative flex items-center md:justify-${index % 2 === 0 ? "start" : "end"} md:even:flex-row-reverse`}
+                className={`relative flex items-center ${index % 2 === 0 ? "md:justify-start" : "md:justify-end md:flex-row-reverse"}`}
               >
                 <div className={`w-full md:w-5/12 ${index % 2 === 0 ? "md:pr-12 md:text-right" : "md:pl-12 md:text-left"}`}>
                   <div className="bg-card border border-border rounded-xl p-5 hover:border-primary/50 transition-all duration-300">
