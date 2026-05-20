@@ -6,7 +6,7 @@ import { FloatingLanguageSwitcher } from "@/components/layout/floating-language"
 import { HeroSection } from "@/components/landing/hero-section";
 import { WhyTradeSection } from "@/components/landing/why-trade-section";
 import { TradingProductsSection } from "@/components/landing/trading-products-section";
-import { TradingTiersSection } from "@/components/landing/trading-tiers-section";
+import { TradingPlansSection } from "@/components/landing/trading-plans-section";
 import { LiveMarketCharts } from "@/components/landing/live-market-charts";
 import { YouTubeSection } from "@/components/landing/youtube-section";
 import { TestimonialsSection } from "@/components/landing/testimonials-section";
@@ -36,8 +36,8 @@ export default function HomePage() {
       {/* Trading Products */}
       <TradingProductsSection />
 
-      {/* Trading Tiers */}
-      <TradingTiersSection />
+      {/* Trading Plans */}
+      <TradingPlansSection />
 
       {/* YouTube Videos */}
       <YouTubeSection />
