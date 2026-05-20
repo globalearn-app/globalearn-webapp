@@ -1,4 +1,4 @@
-export const TRADING_TIERS = [
+export const TRADING_PLANS = [
   {
     id: 1,
     name: "Starter",
@@ -86,17 +86,17 @@ export const TRADING_TIERS = [
   },
 ] as const;
 
-export type TradingTier = (typeof TRADING_TIERS)[number];
+export type TradingPlans = (typeof TRADING_PLANS)[number];
 
-export function getTierById(id: number): TradingTier | undefined {
-  return TRADING_TIERS.find((tier) => tier.id === id);
+export function getTierById(id: number): TradingPlan | undefined {
+  return TRADING_PLANS.find((plan) => plan.id === id);
 }
 
-export function getTierByInvestment(amount: number): TradingTier {
-  for (let i = TRADING_TIERS.length - 1; i >= 0; i--) {
-    if (amount >= TRADING_TIERS[i].minInvestment) {
-      return TRADING_TIERS[i];
+export function getTierByInvestment(amount: number): TradingPlan {
+  for (let i = TRADING_PLANS.length - 1; i >= 0; i--) {
+    if (amount >= TRADING_PLANS[i].minInvestment) {
+      return TRADING_PLANS[i];
     }
   }
-  return TRADING_TIERS[0];
+  return TRADING_PLANS[0];
 }
