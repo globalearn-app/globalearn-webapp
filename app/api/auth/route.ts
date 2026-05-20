@@ -40,7 +40,7 @@ export async function POST(request: NextRequest) {
         phone,
         country,
         role: "user",
-        tier: 1,
+        plan: 1,
         isVerified: false,
         isActive: true,
         kycStatus: "pending",
@@ -83,7 +83,7 @@ export async function POST(request: NextRequest) {
           firstName: user.firstName,
           lastName: user.lastName,
           role: user.role,
-          tier: user.tier,
+          plan: user.plan,
         },
       });
     }
@@ -141,7 +141,7 @@ export async function POST(request: NextRequest) {
           firstName: user.firstName,
           lastName: user.lastName,
           role: user.role,
-          tier: user.tier,
+          plan: user.plan,
           kycStatus: user.kycStatus,
           isVerified: user.isVerified,
         },
