@@ -61,7 +61,7 @@ const UserSchema = new Schema<IUser>(
       enum: ["user", "admin"],
       default: "user",
     },
-    plan: {
+    tier: {
       type: Number,
       enum: [1, 2, 3, 4, 5, 6],
       default: 1,
