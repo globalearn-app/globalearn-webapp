@@ -8,7 +8,7 @@ interface User {
   firstName: string;
   lastName: string;
   role: "user" | "admin";
-  tier: 1 | 2 | 3 | 4 | 5 | 6;
+  plan: 1 | 2 | 3 | 4 | 5 | 6;
   kycStatus?: string;
   isVerified?: boolean;
 }
