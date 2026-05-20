@@ -24,7 +24,7 @@ import {
 } from "recharts";
 import { useAuth } from "@/lib/context/AuthContext";
 import { useCurrency } from "@/lib/context/CurrencyContext";
-import { getTierById } from "@/lib/config/plans";
+import { getPlanById } from "@/lib/config/plans";
 
 interface MarketData {
   id: string;
@@ -39,7 +39,7 @@ export default function DashboardPage() {
   const { user } = useAuth();
   const { format } = useCurrency();
   const [markets, setMarkets] = useState<MarketData[]>([]);
-  const plan = user?.plan ? getTierById(user.plan) : getTierById(1);
+  const plan = user?.plan ? getPlanById(user.plan) : getPlanById(1);
 
   // Mock portfolio data
   const portfolioValue = 12450.89;
