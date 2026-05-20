@@ -40,7 +40,7 @@ export async function POST(request: NextRequest) {
         phone,
         country,
         role: "user",
-        plan: 1,
+        tier: 1,
         isVerified: false,
         isActive: true,
         kycStatus: "pending",
