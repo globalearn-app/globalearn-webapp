@@ -15,6 +15,9 @@ import {
   LogOut,
   ChevronLeft,
   ChevronRight,
+  Users,
+  History,
+  Copy,
 } from "lucide-react";
 import { useState } from "react";
 import { useAuth } from "@/lib/context/AuthContext";
@@ -34,6 +37,11 @@ const sidebarLinks = [
     icon: TrendingUp,
   },
   {
+    label: "Copy Trading",
+    href: "/dashboard/copy-trading",
+    icon: Copy,
+  },
+  {
     label: "Wallets",
     href: "/dashboard/wallets",
     icon: Wallet,
@@ -47,6 +55,16 @@ const sidebarLinks = [
     label: "Withdrawals",
     href: "/dashboard/withdrawals",
     icon: ArrowUpFromLine,
+  },
+  {
+    label: "Transactions",
+    href: "/dashboard/transactions",
+    icon: History,
+  },
+  {
+    label: "Referrals",
+    href: "/dashboard/referrals",
+    icon: Users,
   },
   {
     label: "KYC Verification",

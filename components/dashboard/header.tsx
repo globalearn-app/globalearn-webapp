@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Bell, Search, Menu, X, LayoutDashboard, TrendingUp, Wallet, ArrowDownToLine, ArrowUpFromLine, FileCheck, User, Settings, LogOut } from "lucide-react";
+import { Bell, Search, Menu, X, LayoutDashboard, TrendingUp, Wallet, ArrowDownToLine, ArrowUpFromLine, FileCheck, User, Settings, LogOut, Copy, History, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -14,9 +14,12 @@ import { usePathname } from "next/navigation";
 const mobileLinks = [
   { label: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
   { label: "Trading", href: "/dashboard/trading", icon: TrendingUp },
+  { label: "Copy Trading", href: "/dashboard/copy-trading", icon: Copy },
   { label: "Wallets", href: "/dashboard/wallets", icon: Wallet },
   { label: "Deposits", href: "/dashboard/deposits", icon: ArrowDownToLine },
   { label: "Withdrawals", href: "/dashboard/withdrawals", icon: ArrowUpFromLine },
+  { label: "Transactions", href: "/dashboard/transactions", icon: History },
+  { label: "Referrals", href: "/dashboard/referrals", icon: Users },
   { label: "KYC Verification", href: "/dashboard/kyc", icon: FileCheck },
   { label: "Profile", href: "/dashboard/profile", icon: User },
   { label: "Settings", href: "/dashboard/settings", icon: Settings },
