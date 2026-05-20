@@ -10,7 +10,7 @@ export interface IUser extends Document {
   country?: string;
   avatar?: string;
   role: "user" | "admin";
-  plan: 1 | 2 | 3 | 4 | 5 | 6;
+  tier: 1 | 2 | 3 | 4 | 5 | 6;
   isVerified: boolean;
   isActive: boolean;
   kycStatus: "pending" | "submitted" | "approved" | "rejected";
