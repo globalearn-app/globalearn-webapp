@@ -13,8 +13,8 @@ const videos = [
   },
   {
     id: "2",
-    title: "Understanding Trading Tiers",
-    description: "A complete guide to our investment tiers and profit rates",
+    title: "Understanding Daily Investment Plans",
+    description: "A complete guide to our investment plans and profit rates",
     thumbnail: "https://images.unsplash.com/photo-1642790106117-e829e14a795f?w=600&h=340&fit=crop",
     duration: "8:15",
   },

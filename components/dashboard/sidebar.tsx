@@ -74,8 +74,8 @@ export function DashboardSidebar() {
   return (
     <aside
       className={cn(
-        "fixed left-0 top-0 z-40 h-screen bg-sidebar border-r border-sidebar-border transition-all duration-300",
-        collapsed ? "w-[70px]" : "w-64"
+        "fixed left-0 top-0 z-40 h-screen bg-sidebar border-r border-sidebar-border transition-all duration-300 hidden lg:flex flex-col",
+        collapsed ? "lg:w-[70px]" : "lg:w-64"
       )}
     >
       <div className="flex flex-col h-full">
@@ -115,7 +115,7 @@ export function DashboardSidebar() {
                   {user?.firstName} {user?.lastName}
                 </p>
                 <p className="text-xs text-muted-foreground truncate">
-                  {tier?.name || "Starter"} Tier
+                  {tier?.name || "Starter"} Plan
                 </p>
               </div>
             </div>

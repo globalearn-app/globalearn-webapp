@@ -9,17 +9,17 @@ const faqs = [
   {
     id: 1,
     question: "How do I get started with Global Earn?",
-    answer: "Getting started is simple! Create your free account, complete the KYC verification process, choose your preferred trading tier, make a deposit, and start earning daily profits. Our support team is available 24/7 to guide you through each step.",
+    answer: "Getting started is simple! Create your free account, complete the KYC verification process, choose your preferred investment plan, make a deposit, and start earning daily profits. Our support team is available 24/7 to guide you through each step.",
   },
   {
     id: 2,
     question: "What is the minimum investment amount?",
-    answer: "Our Starter tier begins at just $100, making professional trading accessible to everyone. We offer 6 investment tiers: Starter ($100), Bronze ($300), Silver ($500), Gold ($1,000), Platinum ($3,000), and Diamond ($5,000+), each with increasing profit rates.",
+    answer: "Our Starter plan begins at just $100, making professional trading accessible to everyone. We offer 6 daily investment plans: Starter ($100), Bronze ($300), Silver ($500), Gold ($1,000), Platinum ($3,000), and Diamond ($5,000+), each with increasing profit rates.",
   },
   {
     id: 3,
     question: "How and when can I withdraw my profits?",
-    answer: "You can request a withdrawal at any time through your dashboard. Processing times vary by tier: standard tiers take 24-48 hours, while premium tiers (Gold and above) enjoy expedited withdrawals within 24 hours. There are no hidden fees on withdrawals.",
+    answer: "You can request a withdrawal at any time through your dashboard. Processing times vary by plan: standard plans take 24-48 hours, while premium plans (Gold and above) enjoy expedited withdrawals within 24 hours. There are no hidden fees on withdrawals.",
   },
   {
     id: 4,
@@ -28,8 +28,8 @@ const faqs = [
   },
   {
     id: 5,
-    question: "Can I upgrade my trading tier?",
-    answer: "Yes! You can upgrade your tier at any time by increasing your investment. When you upgrade, you'll immediately start earning the higher profit rate associated with your new tier. There's no waiting period or additional verification required.",
+    question: "Can I upgrade my investment plan?",
+    answer: "Yes! You can upgrade your plan at any time by increasing your investment. When you upgrade, you'll immediately start earning the higher profit rate associated with your new plan. There's no waiting period or additional verification required.",
   },
 ];
 

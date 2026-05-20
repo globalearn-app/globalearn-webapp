@@ -13,7 +13,7 @@ const testimonials = [
     avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
     content: "Global Earn has transformed my trading experience. The platform is incredibly intuitive, and the daily returns have been consistent. Highly recommended for anyone serious about trading.",
     rating: 5,
-    investment: "Gold Tier",
+    investment: "Gold Plan",
   },
   {
     id: 2,
@@ -21,9 +21,9 @@ const testimonials = [
     role: "Investment Analyst",
     location: "United Kingdom",
     avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face",
-    content: "The customer support is exceptional. They helped me understand the different tiers and choose the right investment plan for my goals. The returns have exceeded my expectations.",
+    content: "The customer support is exceptional. They helped me understand the different plans and choose the right investment plan for my goals. The returns have exceeded my expectations.",
     rating: 5,
-    investment: "Platinum Tier",
+    investment: "Platinum Plan",
   },
   {
     id: 3,
@@ -31,9 +31,9 @@ const testimonials = [
     role: "Business Owner",
     location: "Nigeria",
     avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face",
-    content: "Started with the Starter tier and quickly moved up to Bronze. The transparent fee structure and reliable withdrawals make Global Earn stand out from other platforms.",
+    content: "Started with the Starter plan and quickly moved up to Bronze. The transparent fee structure and reliable withdrawals make Global Earn stand out from other platforms.",
     rating: 5,
-    investment: "Bronze Tier",
+    investment: "Bronze Plan",
   },
   {
     id: 4,
@@ -43,7 +43,7 @@ const testimonials = [
     avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face",
     content: "The mobile-friendly platform allows me to monitor my investments on the go. The real-time updates and notifications keep me informed about my portfolio performance.",
     rating: 5,
-    investment: "Silver Tier",
+    investment: "Silver Plan",
   },
   {
     id: 5,
@@ -53,7 +53,7 @@ const testimonials = [
     avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face",
     content: "After retiring, I was looking for a reliable passive income source. Global Earn's Diamond tier has provided me with excellent returns and complete peace of mind.",
     rating: 5,
-    investment: "Diamond Tier",
+    investment: "Diamond Plan",
   },
 ];
 
