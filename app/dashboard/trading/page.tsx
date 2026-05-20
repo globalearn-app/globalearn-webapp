@@ -175,54 +175,60 @@ export default function TradingPage() {
           <Card>
             <CardContent className="p-4">
               <div className="h-[400px]">
-                <ResponsiveContainer width="100%" height="100%">
-                  <AreaChart data={chartData}>
-                    <defs>
-                      <linearGradient id="priceGradient" x1="0" y1="0" x2="0" y2="1">
-                        <stop
-                          offset="5%"
-                          stopColor={
-                            selectedMarket?.change24h && selectedMarket.change24h >= 0
-                              ? "#22c55e"
-                              : "#ef4444"
-                          }
-                          stopOpacity={0.3}
-                        />
-                        <stop
-                          offset="95%"
-                          stopColor={
-                            selectedMarket?.change24h && selectedMarket.change24h >= 0
-                              ? "#22c55e"
-                              : "#ef4444"
-                          }
-                          stopOpacity={0}
-                        />
-                      </linearGradient>
-                    </defs>
-                    <XAxis dataKey="time" hide />
-                    <YAxis hide domain={["dataMin", "dataMax"]} />
-                    <Tooltip
-                      contentStyle={{
-                        backgroundColor: "hsl(var(--card))",
-                        border: "1px solid hsl(var(--border))",
-                        borderRadius: "8px",
-                      }}
-                      formatter={(value: number) => [format(value), "Price"]}
-                    />
-                    <Area
-                      type="monotone"
-                      dataKey="price"
-                      stroke={
-                        selectedMarket?.change24h && selectedMarket.change24h >= 0
-                          ? "#22c55e"
-                          : "#ef4444"
-                      }
-                      strokeWidth={2}
-                      fillOpacity={1}
-                      fill="url(#priceGradient)"
-                    />
-                  </AreaChart>
-                </ResponsiveContainer>
+                {chartData.length > 0 ? (
+                  <ResponsiveContainer width="100%" height="100%" minHeight={400}>
+                    <AreaChart data={chartData}>
+                      <defs>
+                        <linearGradient id="priceGradient" x1="0" y1="0" x2="0" y2="1">
+                          <stop
+                            offset="5%"
+                            stopColor={
+                              selectedMarket?.change24h && selectedMarket.change24h >= 0
+                                ? "#22c55e"
+                                : "#ef4444"
+                            }
+                            stopOpacity={0.3}
+                          />
+                          <stop
+                            offset="95%"
+                            stopColor={
+                              selectedMarket?.change24h && selectedMarket.change24h >= 0
+                                ? "#22c55e"
+                                : "#ef4444"
+                            }
+                            stopOpacity={0}
+                          />
+                        </linearGradient>
+                      </defs>
+                      <XAxis dataKey="time" hide />
+                      <YAxis hide domain={["dataMin", "dataMax"]} />
+                      <Tooltip
+                        contentStyle={{
+                          backgroundColor: "hsl(var(--card))",
+                          border: "1px solid hsl(var(--border))",
+                          borderRadius: "8px",
+                        }}
+                        formatter={(value: number) => [format(value), "Price"]}
+                      />
+                      <Area
+                        type="monotone"
+                        dataKey="price"
+                        stroke={
+                          selectedMarket?.change24h && selectedMarket.change24h >= 0
+                            ? "#22c55e"
+                            : "#ef4444"
+                        }
+                        strokeWidth={2}
+                        fillOpacity={1}
+                        fill="url(#priceGradient)"
+                      />
+                    </AreaChart>
+                  </ResponsiveContainer>
+                ) : (
+                  <div className="h-full flex items-center justify-center">
+                    <div className="h-8 w-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+                  </div>
+                )}
               </div>
             </CardContent>
           </Card>

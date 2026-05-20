@@ -151,43 +151,49 @@ export function LiveMarketCharts() {
                 </div>
 
                 <div className="h-[300px]">
-                  <ResponsiveContainer width="100%" height="100%">
-                    <AreaChart data={chartData}>
-                      <defs>
-                        <linearGradient id="colorPrice" x1="0" y1="0" x2="0" y2="1">
-                          <stop
-                            offset="5%"
-                            stopColor={selected.change24h >= 0 ? "#22c55e" : "#ef4444"}
-                            stopOpacity={0.3}
-                          />
-                          <stop
-                            offset="95%"
-                            stopColor={selected.change24h >= 0 ? "#22c55e" : "#ef4444"}
-                            stopOpacity={0}
-                          />
-                        </linearGradient>
-                      </defs>
-                      <XAxis dataKey="time" hide />
-                      <YAxis hide domain={["dataMin", "dataMax"]} />
-                      <Tooltip
-                        contentStyle={{
-                          backgroundColor: "hsl(var(--card))",
-                          border: "1px solid hsl(var(--border))",
-                          borderRadius: "8px",
-                        }}
-                        formatter={(value: number) => [format(value), "Price"]}
-                        labelFormatter={() => ""}
-                      />
-                      <Area
-                        type="monotone"
-                        dataKey="price"
-                        stroke={selected.change24h >= 0 ? "#22c55e" : "#ef4444"}
-                        strokeWidth={2}
-                        fillOpacity={1}
-                        fill="url(#colorPrice)"
-                      />
-                    </AreaChart>
-                  </ResponsiveContainer>
+                  {chartData.length > 0 ? (
+                    <ResponsiveContainer width="100%" height="100%" minHeight={300}>
+                      <AreaChart data={chartData}>
+                        <defs>
+                          <linearGradient id="colorPrice" x1="0" y1="0" x2="0" y2="1">
+                            <stop
+                              offset="5%"
+                              stopColor={selected.change24h >= 0 ? "#22c55e" : "#ef4444"}
+                              stopOpacity={0.3}
+                            />
+                            <stop
+                              offset="95%"
+                              stopColor={selected.change24h >= 0 ? "#22c55e" : "#ef4444"}
+                              stopOpacity={0}
+                            />
+                          </linearGradient>
+                        </defs>
+                        <XAxis dataKey="time" hide />
+                        <YAxis hide domain={["dataMin", "dataMax"]} />
+                        <Tooltip
+                          contentStyle={{
+                            backgroundColor: "hsl(var(--card))",
+                            border: "1px solid hsl(var(--border))",
+                            borderRadius: "8px",
+                          }}
+                          formatter={(value: number) => [format(value), "Price"]}
+                          labelFormatter={() => ""}
+                        />
+                        <Area
+                          type="monotone"
+                          dataKey="price"
+                          stroke={selected.change24h >= 0 ? "#22c55e" : "#ef4444"}
+                          strokeWidth={2}
+                          fillOpacity={1}
+                          fill="url(#colorPrice)"
+                        />
+                      </AreaChart>
+                    </ResponsiveContainer>
+                  ) : (
+                    <div className="h-full flex items-center justify-center">
+                      <div className="h-8 w-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+                    </div>
+                  )}
                 </div>
 
                 <div className="mt-4 text-xs text-muted-foreground text-center">
