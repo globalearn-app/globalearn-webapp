@@ -10,7 +10,7 @@ export interface IUser extends Document {
   country?: string;
   avatar?: string;
   role: "user" | "admin";
-  tier: 1 | 2 | 3 | 4 | 5 | 6;
+  plan: 1 | 2 | 3 | 4 | 5 | 6;
   isVerified: boolean;
   isActive: boolean;
   kycStatus: "pending" | "submitted" | "approved" | "rejected";
@@ -61,7 +61,7 @@ const UserSchema = new Schema<IUser>(
       enum: ["user", "admin"],
       default: "user",
     },
-    tier: {
+    plan: {
       type: Number,
       enum: [1, 2, 3, 4, 5, 6],
       default: 1,
