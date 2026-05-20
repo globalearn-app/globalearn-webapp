@@ -24,7 +24,7 @@ import {
 } from "@/components/ui/select";
 import { useCurrency } from "@/lib/context/CurrencyContext";
 import { useAuth } from "@/lib/context/AuthContext";
-import { getTierById } from "@/lib/config/tiers";
+import { getTierById } from "@/lib/config/plans";
 
 export default function WithdrawalsPage() {
   const { format } = useCurrency();
@@ -34,7 +34,7 @@ export default function WithdrawalsPage() {
   const [amount, setAmount] = useState("");
   const [walletAddress, setWalletAddress] = useState("");
 
-  const tier = user?.tier ? getTierById(user.tier) : getTierById(1);
+  const plan = user?.plan ? getTierById(user.plan) : getTierById(1);
   const availableBalance = 10200.0;
   const fee = parseFloat(amount || "0") * 0.01;
   const netAmount = parseFloat(amount || "0") - fee;
@@ -256,11 +256,11 @@ export default function WithdrawalsPage() {
               </div>
               <div className="flex justify-between">
                 <span className="text-muted-foreground">Max. Daily</span>
-                <span>{format(tier?.id && tier.id >= 4 ? 100000 : 10000)}</span>
+                <span>{format(plan?.id && plan.id >= 4 ? 100000 : 10000)}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-muted-foreground">Processing Time</span>
-                <span>{tier?.id && tier.id >= 4 ? "24 hours" : "24-48 hours"}</span>
+                <span>{plan?.id && plan.id >= 4 ? "24 hours" : "24-48 hours"}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-muted-foreground">Crypto Fee</span>
@@ -273,7 +273,7 @@ export default function WithdrawalsPage() {
             </CardContent>
           </Card>
 
-          {tier?.id && tier.id >= 4 && (
+          {plan?.id && plan.id >= 4 && (
             <Card className="border-primary/50 bg-primary/5">
               <CardContent className="p-4">
                 <div className="flex items-center gap-2 text-primary mb-2">
@@ -281,7 +281,7 @@ export default function WithdrawalsPage() {
                   <span className="font-medium">VIP Benefits</span>
                 </div>
                 <p className="text-sm text-muted-foreground">
-                  As a {tier.name} tier member, you enjoy faster withdrawals and
+                  As a {plan.name} plan member, you enjoy faster withdrawals and
                   higher daily limits.
                 </p>
               </CardContent>
